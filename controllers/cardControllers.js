@@ -50,7 +50,6 @@ const deleteUser = async (req, res) => {
 
 const editUser = async (req, res) => {
     const user = req.body;
-    console.log(user)
     try{
         await Card.updateOne({_id: user._id}, user);
         getUsers(req, res);

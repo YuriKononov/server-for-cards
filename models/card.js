@@ -18,6 +18,9 @@ const cardSchema = new Schema({
     description: {
         type: String,
         required: true
+    },
+    tags: {
+        type: Array
     }
 }, {timestamps: true});
 
