@@ -3,19 +3,24 @@ const morgan = require('morgan')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 const cardRoutes = require('./routes/cardRoutes');
+const authRoutes = require('./routes/authRoutes');
+const cors = require('cors');
 
 const app = express();
 
 const dbURI = "mongodb+srv://test-user:123qwerty456@cluster0.acaqg.mongodb.net/node-tuts?retryWrites=true&w=majority"
-mongoose.connect(dbURI, {useNewUrlParser:true, useUnifiedTopology:true})
+mongoose.connect(dbURI, {useNewUrlParser:true, useUnifiedTopology:true, useCreateIndex: true})
     .then((result) => app.listen(8080))
     .catch((err) => console.log(err))
 
 app.use(express.urlencoded({extended:true}));
 app.use(express.static('public'));
 app.use(morgan('dev'));
+app.use(express.json());
+app.use(cors());
 
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 
 app.use('/cards', cardRoutes)
+app.use(authRoutes)
