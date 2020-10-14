@@ -6,6 +6,7 @@ const cardRoutes = require('./routes/cardRoutes');
 const authRoutes = require('./routes/authRoutes');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
+const postRoute = require('./routes/testPosts')
 
 const app = express();
 
@@ -20,6 +21,7 @@ app.use(morgan('dev'));
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors());
+app.use(postRoute);
 
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
