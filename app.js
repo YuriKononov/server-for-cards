@@ -4,6 +4,7 @@ const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 const cardRoutes = require('./routes/cardRoutes');
 const authRoutes = require('./routes/authRoutes');
+const projectRoutes = require('./routes/projectRoutes')
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const postRoute = require('./routes/testPosts')
@@ -27,5 +28,6 @@ app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 
 app.use('/cards', cardRoutes)
+app.use('/projects', projectRoutes)
 app.use(authRoutes)
 
