@@ -52,6 +52,7 @@ const deleteProject = async (req, res) => {
 
 const editProject = async (req, res) => {
     const project = req.body;
+    console.log(project)
     try{
         await Project.updateOne({_id: project._id}, project);
         getProjects(req, res);
