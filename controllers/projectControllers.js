@@ -37,15 +37,17 @@ const addProject = async (req, res) => {
 }
 
 const deleteProject = async (req, res) => {
-    const _id = req.body._id;
-    try{
-        await Project.findByIdAndDelete(_id);
-        const result = await returnProjects();
-        res.send(result);
+    const arr = req.body.arrayOfId;
+    for (const _id of arr) {
+        try{
+            await Project.findByIdAndDelete(_id);
+        }
+        catch (error) {
+            throw (error)
+        }
     }
-    catch(error){
-        throw (error)
-    }
+    res.send(await returnProjects())
+    
 }
 
 const editProject = async (req, res) => {
