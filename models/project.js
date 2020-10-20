@@ -16,7 +16,7 @@ const projectSchema = new Schema({
         required: true
     },
     devs: {
-        type: String,
+        type: Array,
         required: true
     },
 },);
