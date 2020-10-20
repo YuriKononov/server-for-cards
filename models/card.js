@@ -19,6 +19,9 @@ const cardSchema = new Schema({
         type: String,
         required: true
     },
+    projects: {
+        type: Array
+    },
     tags: {
         type: Array
     }
